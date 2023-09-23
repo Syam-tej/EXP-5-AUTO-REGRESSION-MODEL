@@ -16,9 +16,7 @@ Implementation of Auto Regression Model using Python
 ## PROGRAM:
 ## DEVELOPED BY : P SYAM TEJ
 ## REF NO : 212221240056
-```
 PYTHON import pandas as pd import numpy as np from matplotlib import pyplot from statsmodels.tsa.ar_model import AutoReg df=pd.read_csv("rainfall.csv") df X=df['temp'] X X.plot() from statsmodels.tsa.stattools import adfuller dtest=adfuller(X,autolag='AIC') print("ADF:",dtest[0]) print("P value:",dtest[1]) print("No. of lags:",dtest[2]) print("No. of observations used for ADF regression:",dtest[3]) X_train=X[:len(X)-15] X_test=X[len(X)-15:] AR_model=AutoReg(X_train,lags=13).fit() print(AR_model.summary()) from statsmodels.graphics.tsaplots import plot_pacf,plot_acf pacf=plot_pacf(X,lags=25) acf=plot_acf(X,lags=25) pred=AR_model.predict(start=len(X_train),end=len(X_train)+len(X_test)-1,dynamic=False) pred.plot() X_test pred import sklearn.metrics mse=sklearn.metrics.mean_squared_error(X_test,pred) mse**0.5 X_test.plot() pred.plot()
-```
 ## OUTPUT:
 ## GIVEN DATA
 ![image](https://github.com/Syam-tej/EXP-5-AUTO-REGRESSION-MODEL/assets/93427224/6bf0131f-7057-428c-912a-3daa0ebc2336)
